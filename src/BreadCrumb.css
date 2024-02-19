@@ -1,0 +1,8 @@
+.link-options {
+  text-decoration: underline;
+  color: blue;
+}
+
+.hide-next-options .link-options ~ span {
+  display: none;
+}

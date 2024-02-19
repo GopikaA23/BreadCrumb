@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React, { useState } from "react";
+import BreadCrumb from "./BreadCrumb";
+import _ from "lodash";
+import "./BreadCrumb.css";
 
 function App() {
+  const values = [
+    "Home",
+    "Registration",
+    "Login",
+    "Personal Details",
+    "Work Details",
+  ];
+
+  const [activeIndex, setActiveIndex] = useState(null);
+
+  const handleClick = (index) => {
+    console.log(`index : ${index}`);
+    setActiveIndex(index);
+  };
+  const hideNextOptions = activeIndex !== null ? "hide-next-options" : "";
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BreadCrumb
+      values={values}
+      onClick={handleClick}
+      hideNextOptions={hideNextOptions}
+      activeIndex={activeIndex}
+    />
   );
 }
 
